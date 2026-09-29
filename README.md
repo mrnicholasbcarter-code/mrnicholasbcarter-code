@@ -14,6 +14,8 @@ Key capabilities:
 - **Independent review**: reviewer excluded from all implementers; route-level or family-level independence enforced ([review policy](https://github.com/mrnicholasbcarter-code/verdict-core/blob/main/verdict/orchestration/review.py))
 - **Tamper-evident receipts**: SHA-256 digest of the event log; any later edit is detected on verification ([receipt module](https://github.com/mrnicholasbcarter-code/verdict-core/blob/main/verdict/orchestration/receipt.py))
 
+Proof write-up: [VERDICT_PROOF_CASE_STUDY.md](https://github.com/mrnicholasbcarter-code/verdict-core/blob/main/docs/portfolio/VERDICT_PROOF_CASE_STUDY.md).
+
 **Credential-free demo** (no API key, no gateway, no network):
 
 ```bash
