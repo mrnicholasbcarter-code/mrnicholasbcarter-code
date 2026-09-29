@@ -23,7 +23,7 @@ pip install verdict-core
 verdict quickstart --non-interactive --dry-run
 ```
 
-The demo makes one deterministic routing decision and names every excluded candidate. Watch the [terminal recording](https://github.com/mrnicholasbcarter-code/verdict-core#demo-goal-to-receipt) or inspect the [committed run proof](https://github.com/mrnicholasbcarter-code/verdict-core/tree/main/docs/proof/demo-run).
+The demo makes one deterministic routing decision and names every excluded candidate. Watch the [terminal recording](https://github.com/mrnicholasbcarter-code/verdict-core#try-it-with-no-keys) or inspect the [committed run proof](https://github.com/mrnicholasbcarter-code/verdict-core/tree/main/docs/proof/demo-run).
 
 Read more: [main README](https://github.com/mrnicholasbcarter-code/verdict-core#verdict), [orchestration architecture](https://github.com/mrnicholasbcarter-code/verdict-core/blob/main/docs/adr/ADR-036-goal-to-receipt-orchestration.md), [claims audit](https://github.com/mrnicholasbcarter-code/verdict-core/blob/main/docs/proof/CLAIMS_AUDIT_2026-09-06.md).
 
