@@ -4,7 +4,7 @@ Senior engineer, 20 years in. Enterprise delivery at AgileThought (for Deloitte 
 
 I help teams:
 
-- cut LLM cost and outages with multi-provider routing, quotas and automatic fallback
+- keep LLM spend and outages under control with multi-provider routing, quotas and automatic fallback
 - run AI agents safely: a plan, parallel workers, an independent AI reviewer and an audit log
 - add guardrails and audit trails to Python and Node AI APIs
 
@@ -18,7 +18,7 @@ I help teams:
 
 | Project | What it does |
 |---|---|
-| [verdict-core](https://github.com/mrnicholasbcarter-code/verdict-core) ([PyPI](https://pypi.org/project/verdict-core/)) | Python CLI and MCP server. Picks the cheapest healthy model per task, reroutes on rate limits and timeouts, and keeps a tamper-evident log of each run. 6,000+ tests. |
+| [verdict-core](https://github.com/mrnicholasbcarter-code/verdict-core) ([PyPI](https://pypi.org/project/verdict-core/)) | Python CLI and MCP server. Decides which models may run each task, recovers from rate limits and timeouts, sends work to a separate reviewer model, and keeps a tamper-evident log of each run. 6,000+ tests. |
 | [verdict-node](https://github.com/mrnicholasbcarter-code/verdict-node) ([npm](https://www.npmjs.com/package/@bodanglin/verdict-node)) | Express and Next.js middleware that blocks unapproved LLM calls and forwards approved ones to any OpenAI-compatible API. Alpha. |
 | [verdict-cockpit](https://github.com/mrnicholasbcarter-code/verdict-cockpit) | Next.js dashboard for reviewing agent runs: which model ran, what got rejected and why. Read-only, fixture data for now. |
 
