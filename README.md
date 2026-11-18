@@ -1,4 +1,4 @@
-# Nick Carter: LLM and AI-agent infrastructure (available for contract work)
+# Nick Carter: AI infrastructure engineer (available for contract work)
 
 Senior engineer, 20 years in. Enterprise delivery at AgileThought (for Deloitte and Bankers Surety), Mad Mobile and Blue Cross Blue Shield of Michigan. Since 2023 I've worked independently on AI infrastructure.
 
@@ -14,6 +14,19 @@ I help teams:
 
 <sub>Offline demo of Verdict's terminal UI. Scripted workers and injected failures; it makes zero model calls.</sub>
 
+## Verdict
+
+Verdict is a control plane that decides which model route may run a task, admits routes only on evidence, and writes a digest-verified receipt.
+
+Try it without API keys:
+
+```bash
+pipx install verdict-core
+verdict demo
+```
+
+The main journey is `verdict orchestrate`: a goal becomes a plan, a DAG, parallel workers with per-node admission, bounded recovery, an independent reviewer, and a tamper-evident receipt. See the [Quick start](https://github.com/mrnicholasbcarter-code/verdict-core#quick-start) and [How it works](https://github.com/mrnicholasbcarter-code/verdict-core#how-it-works) sections.
+
 ## Proof
 
 | Project | What it does |
@@ -25,17 +38,6 @@ I help teams:
 Docs: [nickcarter.dev/docs/verdict](https://nickcarter.dev/docs/verdict)
 
 **Stack:** Python, TypeScript, FastAPI, Express/Next.js, OpenAI/Anthropic, MCP, OpenTelemetry
-
-## Try Verdict without API keys
-
-The install pulls from PyPI. The demo itself needs no key, gateway or network.
-
-```bash
-pipx install verdict-core
-verdict demo
-```
-
-More options are in the [verdict-core README](https://github.com/mrnicholasbcarter-code/verdict-core#try-it-without-api-keys).
 
 ## How Verdict works (for engineers)
 
