@@ -6,7 +6,7 @@ Right now I build tooling that lets coding agents do real work without losing tr
 
 I'm available for contract work. I help teams:
 
-- run coding agents safely: a plan, parallel workers, an independent reviewer and an audit log
+- run coding agents under review: a plan, parallel workers, an independent reviewer and an audit log
 - route LLM calls across providers, with fallback when one hits a rate limit, quota or timeout
 - add guardrails and audit trails to Python and Node AI APIs
 
@@ -27,9 +27,9 @@ What it does, and where to check it:
 - **Runs a goal as a plan of parallel nodes**, each in its own git worktree. [runtime.py](https://github.com/mrnicholasbcarter-code/verdict-core/blob/main/verdict/orchestration/runtime.py), [ADR-036](https://github.com/mrnicholasbcarter-code/verdict-core/blob/main/docs/adr/ADR-036-goal-to-receipt-orchestration.md)
 - **Recovers within a bounded number of attempts.** On a rate limit, quota or timeout the node moves to another admitted provider; when attempts or the pool run out, it stops with `FAIL_CLOSED`. [recovery.py](https://github.com/mrnicholasbcarter-code/verdict-core/blob/main/verdict/orchestration/recovery.py), [tests/test_orch_recovery.py](https://github.com/mrnicholasbcarter-code/verdict-core/blob/main/tests/test_orch_recovery.py)
 - **Sends the result to an independent reviewer** on a different route, preferably a different model family. A skipped or empty review is an error, not a pass. [review.py](https://github.com/mrnicholasbcarter-code/verdict-core/blob/main/verdict/orchestration/review.py), [tests/test_orch_review.py](https://github.com/mrnicholasbcarter-code/verdict-core/blob/main/tests/test_orch_review.py)
-- **Writes a receipt bound to the SHA-256 of the event log**; `verdict run-receipt` recomputes it and flags any edit. [receipt.py](https://github.com/mrnicholasbcarter-code/verdict-core/blob/main/verdict/orchestration/receipt.py), and a [live run record](https://github.com/mrnicholasbcarter-code/verdict-core/tree/main/docs/proof/live-run-20261119T000727Z) on free models, review PASS, receipt verified.
+- **Writes a receipt bound to the SHA-256 of the event log**; `verdict run-receipt` recomputes it and flags any edit. [receipt.py](https://github.com/mrnicholasbcarter-code/verdict-core/blob/main/verdict/orchestration/receipt.py), and a [live run record](https://github.com/mrnicholasbcarter-code/verdict-core/tree/main/docs/proof/live-run-20261119T000727Z) on free models: review PASS, and the run's receipt check is quoted (the raw event log is kept private because it contains host paths).
 
-8,879 test functions in 587 test files, CI on Python 3.10 to 3.13, MIT licence.
+8,800+ [tests](https://github.com/mrnicholasbcarter-code/verdict-core/tree/main/tests), CI on Python 3.10 to 3.13, MIT licence.
 
 Try it without API keys:
 
