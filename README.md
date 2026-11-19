@@ -18,8 +18,7 @@ I'm available for contract work. I help teams:
 
 Agents fail in boring ways: a provider rate-limits, a quota runs out, a reviewer quietly passes its own work. Verdict treats each of those as a named, bounded outcome instead of a hang or a guess.
 
-<!-- hero: swap to live-cockpit.svg -->
-<a href="https://github.com/mrnicholasbcarter-code/verdict-core"><img src="https://raw.githubusercontent.com/mrnicholasbcarter-code/verdict-core/main/docs/assets/demo-tui.svg" alt="Verdict terminal UI: a task graph, a rate-limit reroute, a review step and a receipt check" width="860"></a>
+<a href="https://github.com/mrnicholasbcarter-code/verdict-core"><img src="https://raw.githubusercontent.com/mrnicholasbcarter-code/verdict-core/main/docs/assets/live-cockpit.svg" alt="Replay of one live verdict orchestrate run on free models: a real HTTP 429 rate limit and a failed test, both nodes rerouted to another provider, an independent review PASS, and a receipt that verifies" width="860"></a>
 
 What it does, and where to check it:
 
