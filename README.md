@@ -31,8 +31,8 @@ The main journey is `verdict orchestrate`: a goal becomes a plan, a DAG, paralle
 
 | Project | What it does |
 |---|---|
-| [verdict-core](https://github.com/mrnicholasbcarter-code/verdict-core) ([PyPI](https://pypi.org/project/verdict-core/)) | Python CLI and MCP server. Decides which models may run each task, recovers from rate limits and timeouts, sends work to a separate reviewer model, and keeps a tamper-evident log of each run. 6,000+ tests. |
-| [verdict-node](https://github.com/mrnicholasbcarter-code/verdict-node) ([npm](https://www.npmjs.com/package/@bodanglin/verdict-node)) | Express and Next.js middleware that blocks unapproved LLM calls and forwards approved ones to any OpenAI-compatible API. Alpha. |
+| [verdict-core](https://github.com/mrnicholasbcarter-code/verdict-core) ([PyPI](https://pypi.org/project/verdict-core/)) | Python CLI and MCP server. Decides which models may run each task, recovers from rate limits and timeouts, sends work to a separate reviewer model, and keeps a tamper-evident log of each run. 6,000+ tests ([tests/](https://github.com/mrnicholasbcarter-code/verdict-core/tree/main/tests)). |
+| [verdict-node](https://github.com/mrnicholasbcarter-code/verdict-node) ([npm](https://www.npmjs.com/package/@bodanglin/verdict-node)) | Express and Next.js middleware that blocks unapproved LLM calls and forwards approved ones to any OpenAI-compatible API. Alpha, 0.2.0 on npm. |
 | [verdict-cockpit](https://github.com/mrnicholasbcarter-code/verdict-cockpit) | Next.js dashboard for reviewing agent runs: which model ran, what got rejected and why. Read-only, fixture data for now. |
 
 Docs: [nickcarter.dev/docs/verdict](https://nickcarter.dev/docs/verdict)
