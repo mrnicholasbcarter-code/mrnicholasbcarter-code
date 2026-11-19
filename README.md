@@ -10,7 +10,7 @@ I help teams:
 
 **Hire me:** [Upwork](https://www.upwork.com/freelancers/~01aa0036f6c4dd8a21) · [nick@nickcarter.dev](mailto:nick@nickcarter.dev) · [nickcarter.dev](https://nickcarter.dev)
 
-<a href="https://github.com/mrnicholasbcarter-code/verdict-core#try-it-without-api-keys"><img src="https://raw.githubusercontent.com/mrnicholasbcarter-code/verdict-core/main/docs/assets/demo-tui.svg" alt="Verdict terminal UI: a task graph, a rate-limit reroute, a review step and a receipt check" width="860"></a>
+<a href="https://github.com/mrnicholasbcarter-code/verdict-core"><img src="https://raw.githubusercontent.com/mrnicholasbcarter-code/verdict-core/main/docs/assets/demo-tui.svg" alt="Verdict terminal UI: a task graph, a rate-limit reroute, a review step and a receipt check" width="860"></a>
 
 <sub>Offline demo of Verdict's terminal UI. Scripted workers and injected failures; it makes zero model calls.</sub>
 
@@ -18,21 +18,21 @@ I help teams:
 
 Verdict is a control plane that decides which model route may run a task, admits routes only on evidence, and writes a digest-verified receipt.
 
-Try it without API keys:
+Try it without API keys (this installs 0.4.2, the latest release on PyPI; 1.0.0 is on the main branch and not released yet):
 
 ```bash
 pipx install verdict-core
 verdict demo
 ```
 
-The main journey is `verdict orchestrate`: a goal becomes a plan, a DAG, parallel workers with per-node admission, bounded recovery, an independent reviewer, and a tamper-evident receipt. See the [Quick start](https://github.com/mrnicholasbcarter-code/verdict-core#quick-start) and [How it works](https://github.com/mrnicholasbcarter-code/verdict-core#how-it-works) sections.
+The main journey is `verdict orchestrate`: a goal becomes a plan, a DAG, parallel workers with per-node admission, bounded recovery, an independent reviewer, and a tamper-evident receipt. Workers call models through the built-in direct-gateway executor by default; Prime Agent is an optional harness. See the [README](https://github.com/mrnicholasbcarter-code/verdict-core) for the quick start and the [offline demo guide](https://github.com/mrnicholasbcarter-code/verdict-core/blob/main/docs/guides/offline-demo.md) for what the demo shows.
 
 ## Proof
 
 | Project | What it does |
 |---|---|
-| [verdict-core](https://github.com/mrnicholasbcarter-code/verdict-core) ([PyPI](https://pypi.org/project/verdict-core/)) | Python CLI and MCP server. Decides which models may run each task, recovers from rate limits and timeouts, sends work to a separate reviewer model, and keeps a tamper-evident log of each run. 6,000+ tests. |
-| [verdict-node](https://github.com/mrnicholasbcarter-code/verdict-node) ([npm](https://www.npmjs.com/package/@bodanglin/verdict-node)) | Express and Next.js middleware that blocks unapproved LLM calls and forwards approved ones to any OpenAI-compatible API. Alpha. |
+| [verdict-core](https://github.com/mrnicholasbcarter-code/verdict-core) ([PyPI](https://pypi.org/project/verdict-core/)) | Python CLI and MCP server. Decides which models may run each task, recovers from rate limits and timeouts, sends work to a separate reviewer model, and keeps a tamper-evident log of each run. 6,000+ tests ([tests/](https://github.com/mrnicholasbcarter-code/verdict-core/tree/main/tests)). |
+| [verdict-node](https://github.com/mrnicholasbcarter-code/verdict-node) ([npm](https://www.npmjs.com/package/@bodanglin/verdict-node)) | Express and Next.js middleware that blocks unapproved LLM calls and forwards approved ones to any OpenAI-compatible API. Alpha, 0.2.0 on npm. |
 | [verdict-cockpit](https://github.com/mrnicholasbcarter-code/verdict-cockpit) | Next.js dashboard for reviewing agent runs: which model ran, what got rejected and why. Read-only, fixture data for now. |
 
 Docs: [nickcarter.dev/docs/verdict](https://nickcarter.dev/docs/verdict)
@@ -43,7 +43,7 @@ Docs: [nickcarter.dev/docs/verdict](https://nickcarter.dev/docs/verdict)
 
 - Plan, then fan out. A planner splits a goal into a dependency graph, and each node gets its own model and git worktree ([demo run proof](https://github.com/mrnicholasbcarter-code/verdict-core/tree/main/docs/proof/demo-run)).
 - Admission before ranking. A model has to pass live account, health and quota checks first, and every dropped candidate gets a named reason ([eligibility.py](https://github.com/mrnicholasbcarter-code/verdict-core/blob/main/verdict/orchestration/eligibility.py)).
-- Bounded recovery. A quota, rate-limit or timeout failure cools down the route or provider, and the node moves to another admitted model. After 4 attempts or an empty pool, it stops with a named `FAIL_CLOSED` ([recovery.py](https://github.com/mrnicholasbcarter-code/verdict-core/blob/main/verdict/orchestration/recovery.py)).
+- Bounded recovery. A quota, rate-limit or timeout failure cools down the route or provider, and the node moves to another admitted model. After 4 attempts (the default, set with `--max-attempts-per-node`) or an empty pool, it stops with a named `FAIL_CLOSED` ([recovery.py](https://github.com/mrnicholasbcarter-code/verdict-core/blob/main/verdict/orchestration/recovery.py)).
 - A separate reviewer. Review runs on a route that didn't implement the work, and another model family is preferred ([review.py](https://github.com/mrnicholasbcarter-code/verdict-core/blob/main/verdict/orchestration/review.py)).
 - Receipts you can check. Each run stores a SHA-256 digest of its event log, and `verdict run-receipt` recomputes it and flags any edit ([receipt.py](https://github.com/mrnicholasbcarter-code/verdict-core/blob/main/verdict/orchestration/receipt.py)).
 
